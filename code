@@ -1,0 +1,55 @@
+from enum import Enum
+
+class Customer:
+    def __init__(self,firstName,lastName,phoneNumber,customerEID,email):
+        self.__firstName = firstName
+        self.__lastName = lastName
+        self.__phoneNumber = phoneNumber
+        self.__customerEID = customerEID
+        self.__email = email
+    def setFirstName(self,firstName):
+        self.__firstName = firstName
+    def getFirstName(self):
+        return self.__firstName
+    def setLastName(self, lastName):
+        self.__lastName = lastName
+    def getLastname(self):
+        return self.__lastName
+    def setPhoneNumber(self,phoneNumber):
+        self.__phoneNumber = phoneNumber
+    def getPhoneNumber(self):
+        return self.__phoneNumber
+    def setCustomerEID(self,customerEID):
+        self.__customerEID = customerEID
+    def getCustomerEID(self):
+        return self.__customerEID
+    def setEmail(self,email):
+        self.__email = email
+    def getEmail(self):
+        return self.__email
+
+class VehicleColor(Enum):
+    white = 1
+    Black = 2
+    Silver = 3
+    Red = 4
+
+class Vehicle:
+    def __init__(self,vehicleType,vehicleColor,vehicleID,vehiclePlate):
+        self.__vehicleType = vehicleType
+        self.__vehicleColor = vehicleColor
+        self.__vehicleID = vehicleID
+        self.__vehiclePlate = vehiclePlate
+    def setVehicleType(self,vehicleType):
+        self.__vehicleType = vehicleType
+    def getVehicleType(self):
+        return self.__vehicleType
+    def setVehicleColor(self,vehicleColor):
+        self.__vehicleColor=vehicleColor
+    def getVehicleColor(self):
+        return self.__vehicleColor
+    def getVehicleID(self,vehicleID):
+        return self.__vehicleID
+    def getVehiclePlate(self):
+        return self.__vehiclePlate
+
