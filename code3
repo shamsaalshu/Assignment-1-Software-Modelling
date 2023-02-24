@@ -133,13 +133,13 @@ class Receipt:
         print("Vehicle color: ",self.__vehicle.getColor())
         print("Vehicle ID",self.__vehicle.getID())
         print("Services:",)
+        
         for service in self.__services:
-            print(service.getName())
+            print(service.getName(),"",service.getPrice(),"AED")
+            
         print("Taxes:", self.__taxes)
         print("Discount:", self.__discount)
         print("Total:", self.total())
-       # return ("Customer Name: ",self.__customer,"cell phone Number",self.__phoneNumber,"Date",self.__date,"Mechanic Name",self.__mechainc,"Vechicle Type",self.__vehicle)
-
 
 # Create a Customer object
 customer = Customer("James", "Jones", "816-897-9862","1234567890", "jamesjones@example.com")
