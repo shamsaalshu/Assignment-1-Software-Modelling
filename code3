@@ -1,0 +1,160 @@
+from enum import Enum
+
+class Customer:
+    def __init__(self,firstName,lastName,phoneNumber,customerEID,email):
+        self.__firstName = firstName
+        self.__lastName = lastName
+        self.__phoneNumber = phoneNumber
+        self.__customerEID = customerEID
+        self.__email = email
+
+    def setFirstName(self,firstName):
+        self.__firstName = firstName
+    def getFirstName(self):
+        return self.__firstName
+    def setLastName(self, lastName):
+        self.__lastName = lastName
+    def getLastname(self):
+        return self.__lastName
+    def setPhoneNumber(self,phoneNumber):
+        self.__phoneNumber = phoneNumber
+    def getPhoneNumber(self):
+        return self.__phoneNumber
+    def setCustomerEID(self,customerEID):
+        self.__customerEID = customerEID
+    def getCustomerEID(self):
+        return self.__customerEID
+    def setEmail(self,email):
+        self.__email = email
+    def getEmail(self):
+        return self.__email
+
+    def getFullName(self):
+        return self.__firstName + " " + self.__lastName
+
+class Color(Enum):
+    white = 1
+    Black = 2
+    Silver = 3
+    Red = 4
+
+
+class Vehicle:
+    def __init__(self,make,model,year,color,ID):
+        self.__make = make
+        self.__model = model
+        self.__year = year
+        self.__color =color
+        self.__ID = ID
+    def getVehicleInfo(self):
+        return self.__make + " " + self.__model + " " + str(self.__year)
+
+    def setMake(self,make):
+        self.__make = make
+    def getMake(self):
+        return self.__make
+    def setModel(self,model):
+        self.__model = model
+    def getModel(self):
+        return self.__model
+    def setYear(self,year):
+        self.__year = year
+    def getyear(self):
+        return self.__year
+    def setColor(self,color):
+        self.__color=color
+    def getColor(self):
+        return self.__color
+    def getID(self):
+        return self.__ID
+
+class Service:
+    def __init__(self,name,description,duration,price):
+        self.__name=name
+        self.__description=description
+        self.__duration=duration
+        self.__price=price
+
+    def setName(self, name):
+        self.__name=name
+    def getName(self):
+        return self.__name
+    def setDescription(self,description):
+        self.__description=description
+    def getDescription(self):
+        return self.__dscription
+    def setDuration(self,duration):
+        self.__duration=duration
+    def getDuration(self):
+        return self.__duration
+    def setPrice(self,price):
+        self.__price = price
+    def getPrice(self):
+        return self.__price
+
+class Receipt:
+    def __init__(self,Customer,mechanic,vehicle, services, date, taxes, discount):
+        self.__customer=customer
+        self.__mechainc=mechanic
+        self.__vehicle=vehicle
+        self.__services=services
+        self.__date =date
+        self.__taxes=taxes
+        self.__discount=discount
+    def setMechanic(self,mechanic):
+        self.__mechainc = mechanic
+    def getMechanic(self):
+        return self.__mechainc
+    def setDate(self,date):
+        self.__date = date
+    def getDate(self):
+        return self.__date
+    def setTaxes(self,taxes):
+        self.__taxes=taxes
+    def getTaxes(self):
+        return self.__taxes
+    def setDiscount(self,discount):
+        self.__discount=discount
+    def getDiscount(self):
+        return self.__discount
+
+    def total(self):
+        total=sum(Service.getPrice() for Service in self.__services)
+        total+=self.__taxes
+        total-=self.__discount
+        return total
+
+    def PrintReceipt(self):
+        print("Customer Name: ",self.__customer.getFullName())
+        print("cell phone Number",self.__customer.getPhoneNumber())
+        print("Date",self.__date)
+        print("Mechanic Name:",self.__mechainc)
+        print("Vehicle Type:",self.__vehicle.getVehicleInfo())
+        print("Vehicle color: ",self.__vehicle.getColor())
+        print("Vehicle ID",self.__vehicle.getID())
+        print("Services:",)
+        for service in self.__services:
+            print(service.getName())
+        print("Taxes:", self.__taxes)
+        print("Discount:", self.__discount)
+        print("Total:", self.total())
+       # return ("Customer Name: ",self.__customer,"cell phone Number",self.__phoneNumber,"Date",self.__date,"Mechanic Name",self.__mechainc,"Vechicle Type",self.__vehicle)
+
+
+# Create a Customer object
+customer = Customer("James", "Jones", "816-897-9862","1234567890", "jamesjones@example.com")
+
+# Create a Vehicle object
+vehicle = Vehicle("Nissan", "Altima", 2014, Color.Silver, "AD-89034")
+
+# Create a Service object
+diagnostics = Service("1.Diagnostics","looking at the care and dlajd","5 hours", 15)
+oilReplacement = Service("2.oil Replacement","changing the oil sdfgh","8 h", 100)
+oilFilterParts = Service("3.oil Filter Parts","changing oil Filter Parts","8 h", 90)
+# Create a Receipt object
+receipt = Receipt(customer, mechanic="Hans K", vehicle=vehicle, services=[diagnostics,oilReplacement,oilFilterParts], date="March 13, 2022", taxes=21.5, discount=11.5)
+
+#receipt = Receipt(customer, "Hans K", vehicle, [oilReplacement], "March 13, 2022", 21.5, 11.5)
+
+# Print the receipt
+receipt.PrintReceipt()
